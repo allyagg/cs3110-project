@@ -20,14 +20,14 @@ Alternative project
 If sourcing defensible biological parameters becomes impractical, we would build an OCaml reaction-network simulator. Users would define chemical species, initial amounts, and reactions with rate constants, then run, save, and compare simulations. This alternative preserves our interest in mechanistic modeling while using self-contained example networks, avoiding dependence on organ databases or external plotting libraries.
 
 ### Proposed Architecture
-GUI: Will make a sketch and summary of GUI coding in OCaml 
-Engine: A compilation that takes a hand off from State and hand off from Dynamics and returns the State one time step advanced 
-Model: A compilation unit that takes the hand off from the user interface and constructs the appropriate compartment model. This module should also initialize the t=0 state. 
-Organ: Component that will take the data
-Dynamics: This component will calculate the rates of change for the Euler engine. The rate of change will be broken down into different terms that will be active or inactive depending on the instance of the model. 
-State: Create a snapshot of drug amounts in each compartment; design the components of state and coordinate with Engine/Model. First organ implementation (liver, kidney, etc) → what operations / data each organ can possess. Create an organ type in the organ module that has a field for organ specific parameters (which other organs it connects to, partition coefficient)
-Analysis/Export: Visualizes the time series data and hands it back off to the GUI
-Data: Will hold the time series data
+**GUI**: Will make a sketch and summary of GUI coding in OCaml   
+**Engine**: A compilation that takes a hand off from State and hand off from Dynamics and returns the State one time step advanced 
+**Model**: A compilation unit that takes the hand off from the user interface and constructs the appropriate compartment model. This module should also initialize the t=0 state.   
+**Organ**: Component that will take the data.   
+**Dynamics**: This component will calculate the rates of change for the Euler engine. The rate of change will be broken down into different terms that will be active or inactive depending on the instance of the model.   
+**State**: Create a snapshot of drug amounts in each compartment; design the components of state and coordinate with Engine/Model. First organ implementation (liver, kidney, etc) → what operations / data each organ can possess. Create an organ type in the organ module that has a field for organ specific parameters (which other organs it connects to, partition coefficient). 
+**Analysis/Export**: Visualizes the time series data and hands it back off to the GUI 
+**Data**: Will hold the time series data  
 
 
 
