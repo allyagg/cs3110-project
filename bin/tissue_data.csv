@@ -1,0 +1,8 @@
+## structure module to encase information about each organ
+## should have a row per organ, each row should have the following information 
+
+## organ lipid content (report as a percent% mass)
+## there may be information about tissue saturation (@julia is still looking into that)
+## organ volume (filled out by model_config)
+
+## partition coefficient (filled out by organ)
