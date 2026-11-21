@@ -1,3 +1,7 @@
+## Novemeber 20th, evening work session – Julia
+
+Implemented a significant portion of main. Created the type for the model configuration and the pattern matching from the user input to the model configuration. Also implemented barebones model parameter asserts and passed the model configuration to that validation function in read user input. next up is implementing the main runner that will open the html file and then wait for the user to click the run button. then run the simulation. 
+
 ## November 7-8, mid day work sessions – Julia
 
 Began outlining inputs, parameters, structures that will be passed through the model: 
@@ -6,9 +10,7 @@ relevant updates:
 
 @Amanda (GUI and Organ) the drug should be passed to the user input as a SMILES code. this can be used to turn the chemical structure into information that will be useful for Amanda's organ calculations. We should consider implementing an entire seperate drug.ml file to run these estimations / predictions. There is a C++/python compatible module named RDKit that we could plug into. I am pretty sure Clarkson would be alright with this but we should double check.
 
-@Shannon the dynamics module should be implemented with a parition coefficient  
-
-
+@Shannon the dynamics module should be implemented to return the current rate of change for concentration in each organ with a partition coefficient that will be in a column in tissue_data.csv
 
 
 ## November 1, evening work session – Julia
