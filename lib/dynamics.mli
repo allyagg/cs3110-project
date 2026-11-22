@@ -31,6 +31,11 @@
 type t
 (** The exchange and elimination rates for a fixed set of compartments. *)
 
+val rates : t -> float array -> float array
+(** [rates d amounts] computes the rate of change for each compartment.
+    Raises [Invalid_argument] if [amounts] does not have the same dimension
+    as [d]. *)
+
 (** {1 Construction} *)
 
 val create : int -> t

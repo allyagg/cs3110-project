@@ -15,6 +15,21 @@ type t = {
 
 let size d = Array.length d.elim
 
+let rates d amounts =
+  let n = size d in
+  if Array.length amounts <> n then
+    invalid_arg "Dynamics.rates: state dimension mismatch";
+  Array.init n (fun i ->
+      let transfer_rate =
+        Array.fold_left
+          ( +. )
+          0.
+          (Array.mapi
+             (fun j amount -> d.transfer.(i).(j) *. amount)
+             amounts)
+      in
+      transfer_rate -. d.elim.(i) *. amounts.(i))
+
 let check_index d i =
   if i < 0 || i >= size d then
     invalid_arg (Printf.sprintf "Dynamics: compartment index %d out of range" i)
