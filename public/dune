@@ -1,6 +1,6 @@
 (rule
  (target main.js)
- (deps ../../main.bc.js)
+ (deps ../lib/gui/browser.bc.js)
  (action (copy %{deps} %{target})))
 (rule
  (target index.html)

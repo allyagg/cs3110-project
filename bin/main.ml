@@ -1,7 +1,7 @@
 (** Native entry point: launch the GUI and receive validated model inputs. *)
 let main () =
   let assets =
-    Filename.concat (Filename.dirname Sys.executable_name) "gui/public"
+    Filename.concat (Filename.dirname Sys.executable_name) "../public"
   in
   Gui_server.run ~assets ~on_submit:(fun config ->
       (* Model initialization can consume [config] here when it is implemented. *)

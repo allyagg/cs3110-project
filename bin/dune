@@ -1,14 +1,8 @@
-(library
- (name gui_support)
- (wrapped false)
- (modules model_config gui_server)
- (libraries unix))
-
 (executable
  (name main)
  (modules main)
  (libraries gui_support)
  (link_deps
-  gui/public/index.html
-  gui/public/main.js
-  gui/public/style.css))
+  ../public/index.html
+  ../public/main.js
+  ../public/style.css))

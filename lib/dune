@@ -1,0 +1,9 @@
+(library
+ (name cs3110_project)
+ (modules dynamics engine organ))
+
+(library
+ (name gui_support)
+ (wrapped false)
+ (modules model_config gui_server)
+ (libraries unix))

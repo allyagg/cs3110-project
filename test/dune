@@ -1,0 +1,4 @@
+(test
+ (name test_project)
+ (libraries ounit2 cs3110_project))
+(cram (deps ../bin/main.exe (glob_files_rec ../data/*)))
