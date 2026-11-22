@@ -1,3 +1,7 @@
+## November 22 setup changes - Ally
+
+Reorganized file structure to reflect past assignments. Moved all .ml and .mli files other than main.ml and main.mli into lib/, moved bin/public to project root, created a test folder, and moved data to data folder at project root. Updated file references and dune files to reflect new locations of these files. 
+
 ## Novemeber 20th, evening work session – Julia
 
 Implemented a significant portion of main. Created the type for the model configuration and the pattern matching from the user input to the model configuration. Also implemented barebones model parameter asserts and passed the model configuration to that validation function in read user input. next up is implementing the main runner that will open the html file and then wait for the user to click the run button. then run the simulation. 
