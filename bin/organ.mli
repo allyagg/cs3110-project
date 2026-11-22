@@ -1,3 +1,5 @@
+(*
+
 ## organ.ml should pull hard coded information from tissue_data.ml and 
 ## it should calculate the partition coefficient of the user specified 
 ## drug into the organ. 
@@ -10,3 +12,4 @@
 let coefficients =
   predict_partition_coefficients drug_properties tissue_table
 
+*)

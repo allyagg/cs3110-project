@@ -1,6 +1,6 @@
-### run gui
+(* ### run gui
 
-###    After gui recieves user info we have
+### After gui recieves user info we have
 ###               patient_gender 
 ###               patient_average_heart_rate     
 ###               patient_weight
@@ -32,3 +32,5 @@
 ### this rate will be used with the current concentrations state to generate the next time point 
 
 ### run analysis and return graphs to user (along with exportable file?)
+
+*)
