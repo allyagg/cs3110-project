@@ -1,4 +1,4 @@
 (lang dune 3.24)
 (name PBPK)
 (sections (lib .) (doc ../../doc/PBPK))
-(files (lib (META dune-package opam)) (doc (README.md)))
+(files (lib (META dune-package opam)) (doc (CHANGELOG.md README.md)))
