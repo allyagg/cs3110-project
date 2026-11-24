@@ -1,5 +1,5 @@
-## November 22 SUPER ORGAN SESSION - Amanda
-
+## November 22 ORGAN SESSION - Amanda
+Defined types for Organ ML, MLI. Intend to do any val in next update, however wanted to separate the two as to not have any risk of losing data.
 
 ## November 22 setup changes - Ally
 
