@@ -1,3 +1,4 @@
+(* Tests Dynamics construction, rate calculations, transfer and elimination behavior, immutability, and validation. *)
 open OUnit2
 open Cs3110_project
 

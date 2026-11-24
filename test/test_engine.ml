@@ -1,3 +1,4 @@
+(* Tests Engine rate delegation, Euler stepping, trajectory generation, and input validation. *)
 open OUnit2
 open Cs3110_project
 
