@@ -106,7 +106,7 @@ val create_four_compartments :
 
 val tissue : t -> tissue
 val volume_l : t -> float
-val connection : t -> compartment list
+val connections : t -> compartment list
 val partition_coefficient : t -> float
 
 val compartment_order : compartment list

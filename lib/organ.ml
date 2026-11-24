@@ -1,5 +1,5 @@
 type clearance =
-  | No_Clearance
+  | No_clearance
   | Hepatic
   | Renal
 
@@ -91,16 +91,16 @@ let partition_predictor plasma_lipids drug =
   let plasma_binding =
     max 0. ((1. /. fu) -. 1. -. lipid_partition p plasma_lipids)
   in
-  (fun tissue -> check_tissue tissue)
-  =
-  let kpu =
-    tissue.water_fraction
-    +. lipid_partition p tissue.lipids
-    +. (plasma_binding *. tissue.lipoprotein_ratio)
-  in
-  let kp = fu *. kpu in
-  check_positive "tissue to plasma partition coefficient" kp;
-  kp
+  fun tissue ->
+    check_tissue tissue;
+    let kpu =
+      tissue.water_fraction
+      +. lipid_partition p tissue.lipids
+      +. (plasma_binding *. tissue.lipoprotein_ratio)
+    in
+    let kp = fu *. kpu in
+    check_positive "tissue to plasma partition coefficient" kp;
+    kp
 
 let predict_partition_coefficients plasma_lipids drug tissues =
   let predict = partition_predictor plasma_lipids drug in
