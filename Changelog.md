@@ -1,3 +1,6 @@
+## November 22 ORGAN SESSION - Amanda
+Defined types for Organ ML, MLI. Intend to do any val in next update, however wanted to separate the two as to not have any risk of losing data.
+
 ## November 22 setup changes - Ally
 
 Reorganized file structure to reflect past assignments. Moved all .ml and .mli files other than main.ml and main.mli into lib/, moved bin/public to project root, created a test folder, and moved data to data folder at project root. Updated file references and dune files to reflect new locations of these files. 

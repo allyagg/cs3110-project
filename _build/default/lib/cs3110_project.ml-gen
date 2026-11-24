@@ -8,3 +8,6 @@ module Engine = Cs3110_project__Engine
 
 (** @canonical Cs3110_project.Organ *)
 module Organ = Cs3110_project__Organ
+
+(** @canonical Cs3110_project.State *)
+module State = Cs3110_project__State

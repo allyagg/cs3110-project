@@ -1,0 +1,18 @@
+2026-11-24T01:31:10+00:00 Allys-MacBook-Pro.local#02 I: Start test engine test suite:0:engine rates:1:rates preserves dimension mismatch validation.
+2026-11-24T01:31:10+00:00 Allys-MacBook-Pro.local#02 I: Test engine test suite:0:engine rates:1:rates preserves dimension mismatch validation is successful.
+2026-11-24T01:31:10+00:00 Allys-MacBook-Pro.local#02 I: End test engine test suite:0:engine rates:1:rates preserves dimension mismatch validation.
+2026-11-24T01:31:10+00:00 Allys-MacBook-Pro.local#02 I: Start test engine test suite:1:Euler step:2:step does not mutate its input amounts.
+2026-11-24T01:31:10+00:00 Allys-MacBook-Pro.local#02 I: Test engine test suite:1:Euler step:2:step does not mutate its input amounts is successful.
+2026-11-24T01:31:10+00:00 Allys-MacBook-Pro.local#02 I: End test engine test suite:1:Euler step:2:step does not mutate its input amounts.
+2026-11-24T01:31:10+00:00 Allys-MacBook-Pro.local#02 I: Start test engine test suite:1:Euler step:3:step rejects invalid timesteps.
+2026-11-24T01:31:10+00:00 Allys-MacBook-Pro.local#02 I: Test engine test suite:1:Euler step:3:step rejects invalid timesteps is successful.
+2026-11-24T01:31:10+00:00 Allys-MacBook-Pro.local#02 I: End test engine test suite:1:Euler step:3:step rejects invalid timesteps.
+2026-11-24T01:31:10+00:00 Allys-MacBook-Pro.local#02 I: Start test engine test suite:2:trajectory run:2:run does not mutate initial amounts.
+2026-11-24T01:31:10+00:00 Allys-MacBook-Pro.local#02 I: Test engine test suite:2:trajectory run:2:run does not mutate initial amounts is successful.
+2026-11-24T01:31:10+00:00 Allys-MacBook-Pro.local#02 I: End test engine test suite:2:trajectory run:2:run does not mutate initial amounts.
+2026-11-24T01:31:10+00:00 Allys-MacBook-Pro.local#02 I: Start test engine test suite:2:trajectory run:3:run rejects an invalid duration.
+2026-11-24T01:31:10+00:00 Allys-MacBook-Pro.local#02 I: Test engine test suite:2:trajectory run:3:run rejects an invalid duration is successful.
+2026-11-24T01:31:10+00:00 Allys-MacBook-Pro.local#02 I: End test engine test suite:2:trajectory run:3:run rejects an invalid duration.
+2026-11-24T01:31:10+00:00 Allys-MacBook-Pro.local#02 I: Start test engine test suite:2:trajectory run:5:run rejects too many steps.
+2026-11-24T01:31:10+00:00 Allys-MacBook-Pro.local#02 I: Test engine test suite:2:trajectory run:5:run rejects too many steps is successful.
+2026-11-24T01:31:10+00:00 Allys-MacBook-Pro.local#02 I: End test engine test suite:2:trajectory run:5:run rejects too many steps.

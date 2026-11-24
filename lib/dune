@@ -1,6 +1,6 @@
 (library
  (name cs3110_project)
- (modules dynamics engine organ))
+ (modules dynamics engine organ state))
 
 (library
  (name gui_support)

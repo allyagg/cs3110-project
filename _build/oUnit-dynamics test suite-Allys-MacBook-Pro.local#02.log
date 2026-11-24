@@ -1,0 +1,21 @@
+2026-11-24T01:31:14+00:00 Allys-MacBook-Pro.local#02 I: Start test dynamics test suite:0:create and rates:1:zero dynamics leave amounts unchanged.
+2026-11-24T01:31:14+00:00 Allys-MacBook-Pro.local#02 I: Test dynamics test suite:0:create and rates:1:zero dynamics leave amounts unchanged is successful.
+2026-11-24T01:31:14+00:00 Allys-MacBook-Pro.local#02 I: End test dynamics test suite:0:create and rates:1:zero dynamics leave amounts unchanged.
+2026-11-24T01:31:14+00:00 Allys-MacBook-Pro.local#02 I: Start test dynamics test suite:1:transfer:0:transfer moves drug between compartments.
+2026-11-24T01:31:14+00:00 Allys-MacBook-Pro.local#02 I: Test dynamics test suite:1:transfer:0:transfer moves drug between compartments is successful.
+2026-11-24T01:31:14+00:00 Allys-MacBook-Pro.local#02 I: End test dynamics test suite:1:transfer:0:transfer moves drug between compartments.
+2026-11-24T01:31:14+00:00 Allys-MacBook-Pro.local#02 I: Start test dynamics test suite:1:transfer:2:repeated transfers add together.
+2026-11-24T01:31:14+00:00 Allys-MacBook-Pro.local#02 I: Test dynamics test suite:1:transfer:2:repeated transfers add together is successful.
+2026-11-24T01:31:14+00:00 Allys-MacBook-Pro.local#02 I: End test dynamics test suite:1:transfer:2:repeated transfers add together.
+2026-11-24T01:31:14+00:00 Allys-MacBook-Pro.local#02 I: Start test dynamics test suite:1:transfer:4:elimination is additional to exchange.
+2026-11-24T01:31:14+00:00 Allys-MacBook-Pro.local#02 I: Test dynamics test suite:1:transfer:4:elimination is additional to exchange is successful.
+2026-11-24T01:31:14+00:00 Allys-MacBook-Pro.local#02 I: End test dynamics test suite:1:transfer:4:elimination is additional to exchange.
+2026-11-24T01:31:14+00:00 Allys-MacBook-Pro.local#02 I: Start test dynamics test suite:2:construction validation:0:negative transfer index.
+2026-11-24T01:31:14+00:00 Allys-MacBook-Pro.local#02 I: Test dynamics test suite:2:construction validation:0:negative transfer index is successful.
+2026-11-24T01:31:14+00:00 Allys-MacBook-Pro.local#02 I: End test dynamics test suite:2:construction validation:0:negative transfer index.
+2026-11-24T01:31:14+00:00 Allys-MacBook-Pro.local#02 I: Start test dynamics test suite:2:construction validation:2:transfer from equals transfer to.
+2026-11-24T01:31:14+00:00 Allys-MacBook-Pro.local#02 I: Test dynamics test suite:2:construction validation:2:transfer from equals transfer to is successful.
+2026-11-24T01:31:14+00:00 Allys-MacBook-Pro.local#02 I: End test dynamics test suite:2:construction validation:2:transfer from equals transfer to.
+2026-11-24T01:31:14+00:00 Allys-MacBook-Pro.local#02 I: Start test dynamics test suite:2:construction validation:4:invalid elimination rates.
+2026-11-24T01:31:14+00:00 Allys-MacBook-Pro.local#02 I: Test dynamics test suite:2:construction validation:4:invalid elimination rates is successful.
+2026-11-24T01:31:14+00:00 Allys-MacBook-Pro.local#02 I: End test dynamics test suite:2:construction validation:4:invalid elimination rates.

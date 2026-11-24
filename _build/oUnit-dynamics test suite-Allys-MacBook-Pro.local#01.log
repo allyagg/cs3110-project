@@ -1,0 +1,24 @@
+2026-11-24T01:31:14+00:00 Allys-MacBook-Pro.local#01 I: Start test dynamics test suite:0:create and rates:0:create without compartments.
+2026-11-24T01:31:14+00:00 Allys-MacBook-Pro.local#01 I: Test dynamics test suite:0:create and rates:0:create without compartments is successful.
+2026-11-24T01:31:14+00:00 Allys-MacBook-Pro.local#01 I: End test dynamics test suite:0:create and rates:0:create without compartments.
+2026-11-24T01:31:14+00:00 Allys-MacBook-Pro.local#01 I: Start test dynamics test suite:0:create and rates:2:rate input dimension mismatch.
+2026-11-24T01:31:14+00:00 Allys-MacBook-Pro.local#01 I: Test dynamics test suite:0:create and rates:2:rate input dimension mismatch is successful.
+2026-11-24T01:31:14+00:00 Allys-MacBook-Pro.local#01 I: End test dynamics test suite:0:create and rates:2:rate input dimension mismatch.
+2026-11-24T01:31:14+00:00 Allys-MacBook-Pro.local#01 I: Start test dynamics test suite:0:create and rates:3:elimination changes the matching compartment.
+2026-11-24T01:31:14+00:00 Allys-MacBook-Pro.local#01 I: Test dynamics test suite:0:create and rates:3:elimination changes the matching compartment is successful.
+2026-11-24T01:31:14+00:00 Allys-MacBook-Pro.local#01 I: End test dynamics test suite:0:create and rates:3:elimination changes the matching compartment.
+2026-11-24T01:31:14+00:00 Allys-MacBook-Pro.local#01 I: Start test dynamics test suite:1:transfer:1:one-way transfer conserves total amount.
+2026-11-24T01:31:14+00:00 Allys-MacBook-Pro.local#01 I: Test dynamics test suite:1:transfer:1:one-way transfer conserves total amount is successful.
+2026-11-24T01:31:14+00:00 Allys-MacBook-Pro.local#01 I: End test dynamics test suite:1:transfer:1:one-way transfer conserves total amount.
+2026-11-24T01:31:14+00:00 Allys-MacBook-Pro.local#01 I: Start test dynamics test suite:1:transfer:3:bidirectional exchange is computed correctly.
+2026-11-24T01:31:14+00:00 Allys-MacBook-Pro.local#01 I: Test dynamics test suite:1:transfer:3:bidirectional exchange is computed correctly is successful.
+2026-11-24T01:31:14+00:00 Allys-MacBook-Pro.local#01 I: End test dynamics test suite:1:transfer:3:bidirectional exchange is computed correctly.
+2026-11-24T01:31:14+00:00 Allys-MacBook-Pro.local#01 I: Start test dynamics test suite:1:transfer:5:original dynamics remains unchanged.
+2026-11-24T01:31:14+00:00 Allys-MacBook-Pro.local#01 I: Test dynamics test suite:1:transfer:5:original dynamics remains unchanged is successful.
+2026-11-24T01:31:14+00:00 Allys-MacBook-Pro.local#01 I: End test dynamics test suite:1:transfer:5:original dynamics remains unchanged.
+2026-11-24T01:31:14+00:00 Allys-MacBook-Pro.local#01 I: Start test dynamics test suite:2:construction validation:1:negative elimination index.
+2026-11-24T01:31:14+00:00 Allys-MacBook-Pro.local#01 I: Test dynamics test suite:2:construction validation:1:negative elimination index is successful.
+2026-11-24T01:31:14+00:00 Allys-MacBook-Pro.local#01 I: End test dynamics test suite:2:construction validation:1:negative elimination index.
+2026-11-24T01:31:14+00:00 Allys-MacBook-Pro.local#01 I: Start test dynamics test suite:2:construction validation:3:invalid transfer rates.
+2026-11-24T01:31:14+00:00 Allys-MacBook-Pro.local#01 I: Test dynamics test suite:2:construction validation:3:invalid transfer rates is successful.
+2026-11-24T01:31:14+00:00 Allys-MacBook-Pro.local#01 I: End test dynamics test suite:2:construction validation:3:invalid transfer rates.
