@@ -1,8 +1,10 @@
+
 open OUnit2
 open Cs3110_project
 
 let eps = 1e-9
 let cmp_float a b = Float.abs (a -. b) <= eps
+
 let assert_float ?msg expected actual =
   assert_equal ?msg ~cmp:cmp_float ~printer:string_of_float expected actual
 
@@ -20,99 +22,113 @@ let raises_invalid f =
 let two () =
   State.create ~names:[ "blood"; "liver" ] ~volumes:[ 5.; 2. ] [ 100.; 0. ]
 
-(* ---------- State: construction ---------- *)
+(* State Construction Tests *)
 
 let create_tests =
   [
-    ( "create starts at time 0 with nothing eliminated" >:: fun _ ->
+    (* Check that a new state starts at time 0 with no eliminated drug
+       and preserves the supplied compartment information. *)
+    ( "create initializes state correctly" >:: fun _ ->
       let s = two () in
       assert_float 0. (State.time s);
       assert_float 0. (State.eliminated s);
       assert_equal ~printer:string_of_int 2 (State.size s);
       assert_equal [ "blood"; "liver" ] (State.names s);
       assert_floats [| 100.; 0. |] (State.amounts s) );
-    ( "create rejects empty lists" >:: fun _ ->
-      raises_invalid (fun () -> State.create ~names:[] ~volumes:[] []) );
-    ( "create rejects mismatched lengths" >:: fun _ ->
+
+    (* Each compartment needs a unique name, volume, and drug amount. *)
+    ( "create rejects invalid compartment configurations" >:: fun _ ->
+      raises_invalid (fun () ->
+          State.create ~names:[] ~volumes:[] []);
       raises_invalid (fun () ->
           State.create ~names:[ "a"; "b" ] ~volumes:[ 1. ] [ 0.; 0. ]);
       raises_invalid (fun () ->
-          State.create ~names:[ "a" ] ~volumes:[ 1. ] [ 0.; 0. ]) );
-    ( "create rejects duplicate names" >:: fun _ ->
+          State.create ~names:[ "a" ] ~volumes:[ 1. ] [ 0.; 0. ]);
       raises_invalid (fun () ->
           State.create ~names:[ "a"; "a" ] ~volumes:[ 1.; 1. ] [ 0.; 0. ]) );
-    ( "create rejects zero, negative, and non-finite volumes" >:: fun _ ->
+
+    (* Volumes must be positive and finite. Drug amounts can be zero,
+       since some compartments may not initially contain any drug. *)
+    ( "create validates volumes and amounts" >:: fun _ ->
       List.iter
         (fun v ->
           raises_invalid (fun () ->
               State.create ~names:[ "a" ] ~volumes:[ v ] [ 1. ]))
-        [ 0.; -1.; Float.infinity; Float.nan ] );
-    ( "create rejects negative and non-finite amounts" >:: fun _ ->
+        [ 0.; -1.; Float.infinity; Float.nan ];
       List.iter
         (fun a ->
           raises_invalid (fun () ->
               State.create ~names:[ "a" ] ~volumes:[ 1. ] [ a ]))
-        [ -1.; Float.infinity; Float.nan ] );
-    ( "create accepts a zero amount" >:: fun _ ->
+        [ -1.; Float.infinity; Float.nan ];
       let s = State.create ~names:[ "a" ] ~volumes:[ 1. ] [ 0. ] in
       assert_float 0. (State.total_in_body s) );
   ]
 
-(* ---------- State: queries ---------- *)
+(* State Query Tests *)
 
 let query_tests =
   [
-    ( "index_of finds each compartment" >:: fun _ ->
+    (* Check that compartment names correspond to the correct indices
+       and that looking up an unknown compartment raises Not_found. *)
+    ( "index_of finds compartments" >:: fun _ ->
       let s = two () in
       assert_equal ~printer:string_of_int 0 (State.index_of "blood" s);
-      assert_equal ~printer:string_of_int 1 (State.index_of "liver" s) );
-    ( "index_of raises Not_found for an unknown name" >:: fun _ ->
-      assert_raises Not_found (fun () -> State.index_of "kidney" (two ())) );
-    ( "concentrations are amount / volume" >:: fun _ ->
+      assert_equal ~printer:string_of_int 1 (State.index_of "liver" s);
+      assert_raises Not_found (fun () -> State.index_of "kidney" s) );
+
+    (* Concentration is calculated by dividing amount by volume.
+       Total mass should include drug remaining in the body and drug
+       that has already been eliminated. *)
+    ( "concentration and mass calculations" >:: fun _ ->
       let s =
         State.create ~names:[ "blood"; "liver" ] ~volumes:[ 5.; 2. ]
           [ 100.; 30. ]
       in
-      assert_floats [| 20.; 15. |] (State.concentrations s) );
-    ( "total_mass is in-body plus eliminated" >:: fun _ ->
-      let s = State.update ~time:1. ~eliminated:10. [| 60.; 30. |] (two ()) in
+      assert_floats [| 20.; 15. |] (State.concentrations s);
+      let s =
+        State.update ~time:1. ~eliminated:10. [| 60.; 30. |] (two ())
+      in
       assert_float 90. (State.total_in_body s);
       assert_float 100. (State.total_mass s) );
   ]
 
-(* ---------- State: update and immutability ---------- *)
+(* State Update and Immutability Tests *)
 
 let update_tests =
   [
-    ( "update sets time, eliminated, and amounts" >:: fun _ ->
-      let s = State.update ~time:0.5 ~eliminated:2. [| 70.; 28. |] (two ()) in
-      assert_float 0.5 (State.time s);
-      assert_float 2. (State.eliminated s);
-      assert_floats [| 70.; 28. |] (State.amounts s);
-      assert_equal [ "blood"; "liver" ] (State.names s) );
-    ( "update leaves the original state unchanged" >:: fun _ ->
+    (* An update should return a new state with the updated values
+       while leaving the original state unchanged. It should also reject
+       an array with the wrong number of compartments. *)
+    ( "update creates a valid new state" >:: fun _ ->
       let s0 = two () in
-      let _ = State.update ~time:1. ~eliminated:5. [| 1.; 2. |] s0 in
+      let s1 =
+        State.update ~time:0.5 ~eliminated:2. [| 70.; 28. |] s0
+      in
+      assert_float 0.5 (State.time s1);
+      assert_float 2. (State.eliminated s1);
+      assert_floats [| 70.; 28. |] (State.amounts s1);
+      assert_equal [ "blood"; "liver" ] (State.names s1);
       assert_float 0. (State.time s0);
-      assert_floats [| 100.; 0. |] (State.amounts s0) );
-    ( "update rejects a length mismatch" >:: fun _ ->
+      assert_float 0. (State.eliminated s0);
+      assert_floats [| 100.; 0. |] (State.amounts s0);
       raises_invalid (fun () ->
-          State.update ~time:1. ~eliminated:0. [| 1. |] (two ())) );
-    ( "mutating the array returned by amounts does not change the state"
-    >:: fun _ ->
+          State.update ~time:1. ~eliminated:0. [| 1. |] s0) );
+
+    (* Arrays are mutable, so modifying an array passed into or returned
+       by State should not affect the stored state. *)
+    ( "state protects internal arrays from mutation" >:: fun _ ->
       let s = two () in
       let a = State.amounts s in
       a.(0) <- -999.;
-      assert_floats [| 100.; 0. |] (State.amounts s) );
-    ( "mutating the array passed to update does not change the state"
-    >:: fun _ ->
+      assert_floats [| 100.; 0. |] (State.amounts s);
+
       let input = [| 50.; 50. |] in
       let s = State.update ~time:1. ~eliminated:0. input (two ()) in
       input.(0) <- -999.;
       assert_floats [| 50.; 50. |] (State.amounts s) );
   ]
 
-(* ---------- State with Engine ---------- *)
+(* State and Engine Integration Tests *)
 
 (* Wrap each point of an Engine trajectory as a State. [eliminated] is 0
    because Engine does not yet report drug leaving the body. *)
@@ -121,8 +137,10 @@ let states_of_run s0 run =
 
 let engine_tests =
   [
+    (* Compare the simulation against hand-calculated values for a
+       single compartment with elimination. With k = 0.5/h and
+       dt = 0.5 h, each Euler step multiplies the amount by 0.75. *)
     ( "hand-checked one-compartment elimination (Case A)" >:: fun _ ->
-      (* k = 0.5/h, dt = 0.5 h, so each step multiplies the amount by 0.75. *)
       let s0 = State.create ~names:[ "blood" ] ~volumes:[ 10. ] [ 100. ] in
       let d = Dynamics.create 1 |> Dynamics.add_elimination 0 0.5 in
       let states =
@@ -136,6 +154,10 @@ let engine_tests =
       List.iter2 (fun e a -> assert_float e a)
         [ 10.; 7.5; 5.625; 4.21875; 3.1640625 ] concs;
       List.iter2 (fun e a -> assert_float e a) [ 0.; 0.5; 1.; 1.5; 2. ] times );
+
+    (* Without elimination, transferring drug between compartments
+       should not change the total amount in the body. Check this
+       at every time step over a 24-hour simulation. *)
     ( "transfers alone conserve total mass at every step" >:: fun _ ->
       let s0 =
         State.create
@@ -162,8 +184,10 @@ let engine_tests =
         states );
   ]
 
-(* ---------- Data ---------- *)
+(* Data Tests *)
 
+(* Sample time series with two states. After one hour, 60 mg remains
+   in the blood, 30 mg is in the liver, and 10 mg has been eliminated. *)
 let series () =
   let s0 = two () in
   Data.of_states
@@ -171,32 +195,51 @@ let series () =
 
 let data_tests =
   [
+    (* A valid time series must contain at least one state. *)
     ( "of_states rejects an empty list" >:: fun _ ->
       raises_invalid (fun () -> Data.of_states []) );
+
+    (* States must be in chronological order to represent the
+       progression of the simulation correctly. *)
     ( "of_states rejects decreasing times" >:: fun _ ->
       let s0 = two () in
       let s1 = State.update ~time:1. ~eliminated:0. [| 1.; 1. |] s0 in
       raises_invalid (fun () -> Data.of_states [ s1; s0 ]) );
+
+    (* All states in a simulation must use the same compartments
+       so that their values can be compared over time. *)
     ( "of_states rejects mismatched compartments" >:: fun _ ->
       let other =
         State.create ~names:[ "x"; "y" ] ~volumes:[ 1.; 1. ] [ 0.; 0. ]
       in
       raises_invalid (fun () -> Data.of_states [ two (); other ]) );
+
+    (* Check that the basic accessors return the expected number
+       of states, simulation times, and final state. *)
     ( "length, times, and final" >:: fun _ ->
       let s = series () in
       assert_equal ~printer:string_of_int 2 (Data.length s);
       assert_equal [ 0.; 1. ] (Data.times s);
       assert_float 1. (State.time (Data.final s)) );
+
+    (* Retrieve the drug amounts for a particular compartment
+       throughout the simulation and check an invalid lookup. *)
     ( "amounts_of picks one compartment over time" >:: fun _ ->
       assert_equal [ 0.; 30. ] (Data.amounts_of "liver" (series ()));
       assert_raises Not_found (fun () -> Data.amounts_of "kidney" (series ()))
     );
+
+    (* Compare the generated CSV against the expected output,
+       including column headers, amounts, and concentrations. *)
     ( "to_csv has a header and one row per state" >:: fun _ ->
       assert_equal ~printer:(fun s -> s)
         "time,blood_mg,liver_mg,blood_mg_per_l,liver_mg_per_l,eliminated_mg\n\
          0,100,0,20,0,0\n\
          1,60,30,12,15,10\n"
         (Data.to_csv (series ())) );
+
+    (* Write the CSV to a temporary file and read it back to check
+       that the saved contents match the generated CSV string. *)
     ( "save_csv writes to_csv to a file" >:: fun _ ->
       let path = Filename.temp_file "series" ".csv" in
       Data.save_csv path (series ());
