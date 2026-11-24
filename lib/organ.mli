@@ -34,6 +34,13 @@ type clearance =
 (* Renal Clearance: the volume of blood plasma from which a substance is
    completely removed by the kidneys and excreted into urine per unit of time*)
 
+(** What compartment is having test ran *)
+type compartment =
+  | Blood
+  | Liver
+  | Kidneys
+  | Remaining_tissues
+
 type lipids = {
   neutral_lipid_fraction : float;
   neutral_phospholipid_fraction : float;
@@ -64,5 +71,46 @@ type neutral_drug = {
     is the base-10 log of the OTW partition coefficient. The unbound fraction is
     0<f<1 *)
 
+type tissue_input = {
+  data : tissue;
+  patient_volume_l : float;
+}
+(** When users input patient data on a tissue *)
+
 type t
 (** Abstract type for tissue made for the simulation *)
+
+type four_compartments = {
+  blood_volume_l : float;
+  liver : t;
+  kidneys : t;
+  remaining_tissues : t;
+}
+(** !!! IMPORTANT!!! Added this after looking at main / GUI. Unsure if needed /
+    necessary but talk in meeting about this!!!*)
+
+val predict_partition_coefficients :
+  lipids -> neutral_drug -> tissue list -> (string * float) list
+(** Returns the tissue names and tissue to total plasma KP values in input order
+*)
+
+val create_four_compartments :
+  lipids ->
+  neutral_drug ->
+  float ->
+  tissue_input ->
+  tissue_input ->
+  tissue_input ->
+  four_compartments
+(** Calculates each tissue KP value and configures it for blood exchanges *)
+
+val tissue : t -> tissue
+val volume_l : t -> float
+val connections : t -> compartment list
+val partition_coefficient : t -> float
+
+val compartment_order : compartment list
+(** Input order used for simulation array *)
+
+val initial_amounts : float -> float array
+(** Amounts in mg in compartment order with full dose of blood *)

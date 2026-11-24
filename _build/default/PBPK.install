@@ -1,8 +1,0 @@
-lib: [
-  "_build/install/default/lib/PBPK/META"
-  "_build/install/default/lib/PBPK/dune-package"
-  "_build/install/default/lib/PBPK/opam"
-]
-doc: [
-  "_build/install/default/doc/PBPK/README.md"
-]
