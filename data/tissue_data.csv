@@ -1,3 +1,10 @@
+#import yada yada
+
+#write.csv(tissue.data, "tissue_composition.csv", row.names = true)
+
+
+
+
 ## structure module to encase information about each organ
 ## should have a row per organ, each row should have the following information 
 
