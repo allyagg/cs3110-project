@@ -1,4 +1,9 @@
+## Nov. 22 Engine Implementation - Ally
+
+Built initial implementation of engine.ml and engine.mli, waited to push until dynamics.ml was implemented to make sure representation is consistent.
+
 ## November 22 ORGAN SESSION - Amanda
+
 Defined types for Organ ML, MLI. Intend to do any val in next update, however wanted to separate the two as to not have any risk of losing data.
 
 ## November 22 setup changes - Ally
