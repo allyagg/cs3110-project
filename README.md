@@ -2,7 +2,7 @@
 
 Team 58, PBK modeling 
 
-Members: Ally Aggarwal (aa2936), Amanda, Elaine, Julia, Shannon
+Members: Ally Aggarwal (aa2936), Amanda, Elaine Dong (efd53), Julia, Shannon
 
 ### Project Proposal
 We propose building a user-friendly physiologically based pharmacokinetic (PBPK) simulator in OCaml. The program will let users explore how a drug moves between blood and organ compartments and how changes to an experiment affect drug exposure over time. Our initial scope is organ-level distribution and elimination, using a small collection of documented parameters and a simplified circulation model. The project will combine a configurable mathematical simulation with saved experiments, result analysis, and clear module interfaces.
