@@ -1,9 +1,15 @@
+## November 23rd Data Session - Elaine
+Added the Data module for time-series results once implemented. Wraps a run's list of States, gives per-compartment amounts over time, and exports to CSV. Added relevant 7 tests to cover x functionality. 
+
 ## November 22 ORGAN SESSION - Amanda
 Defined types for Organ ML, MLI. Intend to do any val in next update, however wanted to separate the two as to not have any risk of losing data.
 
 ## November 22 setup changes - Ally
 
 Reorganized file structure to reflect past assignments. Moved all .ml and .mli files other than main.ml and main.mli into lib/, moved bin/public to project root, created a test folder, and moved data to data folder at project root. Updated file references and dune files to reflect new locations of these files. 
+
+## November 21st State Session - Elaine 
+Implemented the State module as an immutable snapshot of each compartment's name, volume, and drug amount, plus current time and total eliminated drug. Concentrations are computed as amount / volume, and total_mass (in body + eliminated) supports mass-conservation checks. Added tests covering State and State + Engine along with hand-checked elimination and mass conservation.
 
 ## Novemeber 20th, evening work session – Julia
 
